@@ -1,0 +1,47 @@
+<!-- Were it all renders -->
+<html>
+<head>
+	<title>Harry the Kiddush Man's song generator</title>
+	<link rel="stylesheet" 
+	type="text/css" 
+	href="style.css">
+</head>
+<body>
+	<!-- this does not connect the js file, this does: <script src="app.js" defer></script>  -->
+	<!-- it is identifying itself with a string of 'app' vue will be looking for something with this ID  -->
+	<div id="app">
+
+		<h1>Harry the Kiddush Man's song generator</h1>
+		<!--<div>
+			<div class="image-container">
+          		<img src="http://www.sciencemag.org/sites/default/files/styles/article_main_large/public/iStock-533225488_16x9.jpg?itok=2HUFc6Ct" alt="whiskey">
+        	</div>
+    	</div>-->
+    
+    	<form>
+    		<div class="form-field">
+    			<h2>Generate song list</h2>	
+          
+          		<legend>Select the types of songs to include in the list</legend>
+
+	            <!-- in inputs, the "name" attr. is the key, and the "value" is the value, as such, name: value.  -->
+	            <div v-for="event in sortedEventTypes">
+	                													<!-- v-model="events"  connects to .js-->
+	            	<label>
+		                <input name="event" type="checkbox" :value="event.value" v-model="events">
+            	        {{event.label}}
+		            </label>
+	            </div>
+            </div>
+
+    	</form>
+
+	    <ul>
+	    	<li v-for="song in songListForEvents">{{song.title}}</li>
+	    </ul> 
+    </div>
+
+	<script src="vue.js" defer></script>
+	<script src="app.js" defer></script>
+</body>
+</html>
